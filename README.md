@@ -5,4 +5,5 @@ Run project in docker
 All dependencies will downloaded.
 
 Instances of the Location model will be created from a CSV file.
+
 Instances of the Truck model will be generated.
