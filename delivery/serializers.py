@@ -59,7 +59,6 @@ class CargoListSerializer(serializers.ModelSerializer):
         fields = ('pk', 'pick_up', 'delivery', 'weight', 'description', 'trucks')
 
     def get_trucks(self, obj):
-
         if self.context['request'].GET.get('miles_to_trucks'):
             return self.context['request'].data.get(str(obj.pick_up))
         else:

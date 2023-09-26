@@ -3,7 +3,7 @@ import random
 import string
 
 from django.core.management import BaseCommand
-from django.db import connection
+
 
 from delivery.models import Location, Truck
 
@@ -15,9 +15,9 @@ class Command(BaseCommand):
         self.locations = Location.objects.only('zip_code')
 
     def handle(self, *args, **kwargs):
-        self.stdout.write('Check Truck.model')
+        self.stdout.write('Check trucks in db')
         if Truck.objects.exists():
-            self.stdout.write('Trucks exist')
+            self.stdout.write(self.style.SUCCESS('trucks exist'))
         else:
             trucks_list = []
             for _ in range(20):
@@ -28,4 +28,4 @@ class Command(BaseCommand):
 
                 trucks_list.append(truck)
             Truck.objects.bulk_create(trucks_list)
-            self.stdout.write('Trucks created')
+            self.stdout.write(self.style.SUCCESS('trucks created'))

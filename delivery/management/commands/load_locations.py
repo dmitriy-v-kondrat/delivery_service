@@ -13,9 +13,9 @@ class Command(BaseCommand):
     """Checks objects in Location.model if not exist adds objects from csv-file"""
 
     def handle(self, *args, **kwargs):
-        self.stdout.write('Check Location.model')
+        self.stdout.write('Check locations in db')
         if Location.objects.exists():
-            self.stdout.write('Locations exist')
+            self.stdout.write(self.style.SUCCESS('locations exist'))
         else:
             with open('uszips.csv', 'r') as csvfile:
                 reader = csv.DictReader(csvfile)
@@ -27,4 +27,4 @@ class Command(BaseCommand):
 
             with connection.cursor() as cursor:
                 cursor.execute(sql_query)
-            self.stdout.write('Locations created')
+            self.stdout.write(self.style.SUCCESS('locations created'))
