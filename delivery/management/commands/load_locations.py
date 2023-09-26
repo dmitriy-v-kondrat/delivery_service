@@ -10,7 +10,7 @@ from delivery.models import Location
 
 
 class Command(BaseCommand):
-    """Checks objects in Location.model if not exist adds objects from csv-file"""
+    """Checks objects in Location.model if not exist adds objects from csv-file."""
 
     def handle(self, *args, **kwargs):
         self.stdout.write('Check locations in db')

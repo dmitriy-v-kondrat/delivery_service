@@ -9,7 +9,7 @@ from delivery.models import Location, Truck
 
 
 class Command(BaseCommand):
-    """Checks instance in Truck.model if not exist adds objects"""
+    """Checks instance in Truck.model if not exist adds objects."""
     def __init__(self):
         super().__init__()
         self.locations = Location.objects.only('zip_code')
